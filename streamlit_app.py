@@ -40,10 +40,25 @@ if "df_author_grouped" in st.session_state:
     if "Tous" not in selected_fashion:
         df_author_filtered = df_author_filtered[df_author_filtered['FashionStyle'].isin(selected_fashion)]
 
-    st.subheader("Auteurs selectionnés")
-    
+    # Affichage
+    st.subheader("Auteurs sélectionnés")
     st.dataframe(df_author_filtered)
 
+    # --- Statistiques de volume ---
+    st.subheader("Volume des auteurs filtrés")
+    st.markdown(f"**Nombre total d'auteurs : {len(df_author_filtered)}**")
+
+    # Distribution par Age
+    st.markdown("**Distribution par Age**")
+    st.bar_chart(df_author_filtered['Age'].value_counts())
+
+    # Distribution par Level
+    st.markdown("**Distribution par Level**")
+    st.bar_chart(df_author_filtered['Level'].value_counts())
+
+    # Distribution par FashionStyle
+    st.markdown("**Distribution par FashionStyle**")
+    st.bar_chart(df_author_filtered['FashionStyle'].value_counts())
 
 # --- Calculer df_compute via compute_df_score ---
 if st.button("Calculer Score"):

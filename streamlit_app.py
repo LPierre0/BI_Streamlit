@@ -1,9 +1,9 @@
-from function import compute_df_score
+from BI_Streamlit.function import compute_df_score
 import streamlit as st
 import pandas as pd
 
 # Chemin vers ton fichier Excel déjà présent
-excel_file = "../alltricks.xlsx"
+excel_file = "./alltricks.xlsx"
 
 # Charger les données dans session_state si ce n'est pas déjà fait
 if "df_product" not in st.session_state:

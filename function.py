@@ -12,7 +12,7 @@ def sigmoid_normalize(x, alpha=1):
 
 def compute_df_score(df_product, df_rating):
     # Copies des DataFrames pour ne pas modifier les originaux
-    df_product_copy = df_product[['url', 'product_id', 'name', 'price', 'category']].copy()
+    df_product_copy = df_product[['url', 'product_id', 'parfum', 'name', 'price', 'category']].copy()
     df_rating_copy = df_rating.copy()
 
     # Convertir les colonnes numériques et remplacer NA par 0
@@ -106,4 +106,4 @@ def compute_df_score(df_product, df_rating):
     # Trier par score décroissant
     df_product_copy.sort_values(by='score', ascending=False, inplace=True)
 
-    return df_product_copy[['name', 'category', 'score', 'avg_rating', 'nb_reviews', 'price', 'url', 'product_id']]
+    return df_product_copy[['name', 'category', 'parfum', 'score', 'avg_rating', 'nb_reviews', 'price', 'url', 'product_id']]

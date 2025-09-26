@@ -91,13 +91,13 @@ if "df_compute" in st.session_state:
     )
 
 
-# Calcul du score moyen par catégorie + nombre de produits
-df_category_score = (
-    df_filtered.groupby('category', as_index=False)
-    .agg(score_mean=('score','mean'), nb_products=('product_id','count'))
-    .round(2)
-    .sort_values(by='score_mean', ascending=False)
-)
+    # Calcul du score moyen par catégorie + nombre de produits
+    df_category_score = (
+        df_filtered.groupby('category', as_index=False)
+        .agg(score_mean=('score','mean'), nb_products=('product_id','count'))
+        .round(2)
+        .sort_values(by='score_mean', ascending=False)
+    )
 
-st.dataframe(df_category_score)
+    st.dataframe(df_category_score)
 

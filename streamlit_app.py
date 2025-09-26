@@ -1,6 +1,7 @@
 from function import compute_df_score
 import streamlit as st
 import pandas as pd
+import openpyxl
 
 # Chemin vers ton fichier Excel déjà présent
 excel_file = "./alltricks.xlsx"

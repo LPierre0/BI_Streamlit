@@ -80,7 +80,7 @@ def compute_df_score(df_product, df_rating):
     )
 
     # Bayesian smoothing
-    seuil_rating = 20
+    seuil_rating = 5
     df_product_copy['rating_bayesian'] = (
         df_product_copy['avg_rating'] * df_product_copy['nb_reviews'] +
         df_product_copy['avg_rating'].mean() * seuil_rating

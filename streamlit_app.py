@@ -30,10 +30,6 @@ if "df_author_grouped" in st.session_state:
     fashion_options = ["Tous"] + st.session_state.df_author_grouped['FashionStyle'].dropna().unique().tolist()
     selected_fashion = st.multiselect("Sélectionnez un ou plusieurs FashionStyle", fashion_options, default=["Tous"])
     
-    # Filtre Gender
-    gender_options = ["Tous"] + st.session_state.df_author_grouped['Gender'].dropna().unique().tolist()
-    selected_gender = st.multiselect("Sélectionnez un ou plusieurs Gender", gender_options, default=["Tous"])
-
     # Appliquer tous les filtres
     df_author_filtered = st.session_state.df_author_grouped.copy()
     
@@ -43,9 +39,7 @@ if "df_author_grouped" in st.session_state:
         df_author_filtered = df_author_filtered[df_author_filtered['Level'].isin(selected_level)]
     if "Tous" not in selected_fashion:
         df_author_filtered = df_author_filtered[df_author_filtered['FashionStyle'].isin(selected_fashion)]
-    if "Tous" not in selected_gender:
-        df_author_filtered = df_author_filtered[df_author_filtered['Gender'].isin(selected_gender)]
-    
+
     st.subheader("Auteurs selectionnés")
     
     st.dataframe(df_author_filtered)

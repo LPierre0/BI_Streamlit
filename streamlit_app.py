@@ -19,7 +19,7 @@ if "df_author_grouped" in st.session_state:
     st.subheader("Filtrer les auteurs")
 
     # Filtre Age
-    age_options = ["Tous", "18to24", "25to34", "35to44", "45to54", "55to64", "65orOver"]
+    age_options = ["Tous", "17orUnder", "18to24", "25to34", "35to44", "45to54", "55to64", "65orOver"]
     selected_age = st.multiselect("Sélectionnez un ou plusieurs groupes d'âge", age_options, default=["Tous"])
     
     # Filtre Level (anciennement BodyType)

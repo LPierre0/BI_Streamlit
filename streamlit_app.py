@@ -27,9 +27,6 @@ selected_age = st.sidebar.multiselect("Âge", age_options, default=None)
 level_options = sorted(df_authors['Level'].dropna().unique())
 selected_level = st.sidebar.multiselect("Level", level_options, default=None)
 
-# Filtre FashionStyle
-fashion_options =  sorted(df_authors['FashionStyle'].dropna().unique())
-selected_fashion = st.sidebar.multiselect("FashionStyle", fashion_options, default=None)
 
 # Appliquer les filtres
 df_author_filtered = df_authors.copy()

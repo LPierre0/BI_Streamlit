@@ -1,4 +1,4 @@
-from BI_Streamlit.function import compute_df_score
+from function import compute_df_score
 import streamlit as st
 import pandas as pd
 

@@ -37,8 +37,7 @@ if selected_age:
     df_author_filtered = df_author_filtered[df_author_filtered['Age'].isin(selected_age)]
 if selected_level:
     df_author_filtered = df_author_filtered[df_author_filtered['Level'].isin(selected_level)]
-if selected_fashion:
-    df_author_filtered = df_author_filtered[df_author_filtered['FashionStyle'].isin(selected_fashion)]
+
 
 # --- Stats auteurs filtrés ---
 st.header("Auteurs sélectionnés")

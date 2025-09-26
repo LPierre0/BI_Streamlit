@@ -53,10 +53,6 @@ st.markdown("**Distribution par Level**")
 fig_level = px.histogram(df_author_filtered, x='Level', title="Level des auteurs")
 st.plotly_chart(fig_level, use_container_width=True)
 
-st.markdown("**Distribution par FashionStyle**")
-fig_fashion = px.histogram(df_author_filtered, x='FashionStyle', title="FashionStyle des auteurs")
-st.plotly_chart(fig_fashion, use_container_width=True)
-
 # --- Calculer df_compute ---
 if st.button("Calculer Score"):
     if "df_product" in st.session_state and "df_rating" in st.session_state:

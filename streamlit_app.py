@@ -45,13 +45,34 @@ col2.metric("Âge moyen", round(df_author_filtered['Age'].replace({
 }).mean()))
 col3.metric("Niveaux uniques", df_author_filtered['Level'].nunique())
 
+# 🔹 Définir l’ordre des âges
+age_order = ["17orUnder", "18to24", "25to34", "35to44", "45to54", "55to64", "65orOver"]
+df_author_filtered["Age"] = pd.Categorical(df_author_filtered["Age"], categories=age_order, ordered=True)
+
+# 🔹 Définir l’ordre des niveaux
+level_order = ["Debutant", "Amateur", "Eclaire", "Expert"]
+df_author_filtered["Level"] = pd.Categorical(df_author_filtered["Level"], categories=level_order, ordered=True)
+
+# Distribution par Âge
 st.markdown("**Distribution par Âge**")
-fig_age = px.histogram(df_author_filtered, x='Age', title="Âge des auteurs")
+fig_age = px.histogram(
+    df_author_filtered,
+    x='Age',
+    category_orders={'Age': age_order},  # impose l’ordre
+    title="Âge des auteurs"
+)
 st.plotly_chart(fig_age, use_container_width=True)
 
+# Distribution par Level
 st.markdown("**Distribution par Level**")
-fig_level = px.histogram(df_author_filtered, x='Level', title="Level des auteurs")
+fig_level = px.histogram(
+    df_author_filtered,
+    x='Level',
+    category_orders={'Level': level_order},  # impose l’ordre
+    title="Level des auteurs"
+)
 st.plotly_chart(fig_level, use_container_width=True)
+
 
 # --- Calculer df_compute ---
 if st.button("Calculer Score"):

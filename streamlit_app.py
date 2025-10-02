@@ -43,6 +43,17 @@ df_filtered = None
 selected_categories = []
 selected_parfums = []
 
+# --- Bouton Calculer Score en bas de la sidebar ---
+st.sidebar.markdown("<div style='position:fixed; bottom:20px; width:230px;'>", unsafe_allow_html=True)
+calculate_pressed = st.sidebar.button("✅ Calculer Score")
+st.sidebar.markdown("</div>", unsafe_allow_html=True)
+
+if calculate_pressed and "df_product" in st.session_state and "df_rating" in st.session_state:
+    df_filtered_rating = st.session_state.df_rating[
+        st.session_state.df_rating['author_id'].isin(df_author_filtered['author_id'])
+    ]
+    st.session_state.df_compute = compute_df_score(st.session_state.df_product, df_filtered_rating)
+    st.success("Scores calculés !")
 # --- Filtres produits (si df_compute existe) ---
 if "df_compute" in st.session_state:
     df_filtered = st.session_state.df_compute.copy()
@@ -74,17 +85,6 @@ if "df_compute" in st.session_state:
                 lambda lst: all(p in lst for p in selected_parfums)
             )]
 
-# --- Bouton Calculer Score en bas de la sidebar ---
-st.sidebar.markdown("<div style='position:fixed; bottom:20px; width:230px;'>", unsafe_allow_html=True)
-calculate_pressed = st.sidebar.button("✅ Calculer Score")
-st.sidebar.markdown("</div>", unsafe_allow_html=True)
-
-if calculate_pressed and "df_product" in st.session_state and "df_rating" in st.session_state:
-    df_filtered_rating = st.session_state.df_rating[
-        st.session_state.df_rating['author_id'].isin(df_author_filtered['author_id'])
-    ]
-    st.session_state.df_compute = compute_df_score(st.session_state.df_product, df_filtered_rating)
-    st.success("Scores calculés !")
 
 # --- Page principale ---
 

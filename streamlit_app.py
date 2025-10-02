@@ -53,6 +53,12 @@ if "df_compute" in st.session_state:
     if selected_categories:
         df_filtered = df_filtered[df_filtered['category'].isin(selected_categories)]
 
+
+    brand = sorted(df_filtered['brand'].dropna().unique())
+
+    selected_brands = st.sidebar.multiselect("Marque", brand, default = None)
+    if selected_brands:
+        df_filtered = df_filtered[df_filtered['brand'].isin(selected_brands)]
     # Parfums
     if 'parfum_list' in df_filtered.columns:
         # Remplacer tout non-liste par liste vide
